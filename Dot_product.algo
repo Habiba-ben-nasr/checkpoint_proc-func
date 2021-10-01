@@ -1,0 +1,95 @@
+PROCEDURE calculate_dot(T,A:ARRAY_OF FLOAT, var ps:FLOAT)
+VAR i: INTEGER;
+BEGIN
+ps:=0;
+  FOR i FROM 0 TO 2 STEP step  DO
+     ps:=ps+T[i]*A[i]
+  END_FOR
+  Write(ps);
+END
+
+
+ALGORITHM Dot_product
+VAR
+    mtx_vec : ARRAY_OF FLOAT[3][];
+    n,i,j,k:INTEGER;
+    P:FLOAT;
+BEGIN
+REPEAT
+    Write("Enter the number of vectors");
+    Read(n);
+UNTIL (n>=2)
+
+FOR i FROM 0 TO n-1 STEP step  DO
+FOR j FROM 0 TO 2 STEP step  DO
+    Write("entrer la coordonnées",j+1,"du vecteur",i+1);
+       Read(mtx_vec[i][j]);
+END_FOR 
+END_FOR
+
+i:=0;
+REPEAT
+FOR j FROM i+1 TO n-1 STEP step  DO
+  FOR k FROM 0 TO 2 STEP step  DO
+     T1[k]:=mtx_vec[i][k];
+     T2[k]:=mtx_vec[j][k];
+  END_FOR
+ calculate_dot(T1,T2:,var: P)
+
+    IF (P=0) THEN
+        Write("the voctor",i+1,"and the vector",j+1,"are orthogonal")
+    END_IF
+END_FOR
+i:=i+1;
+UNTIL (i==n-2)
+END
+
+
+/****************************Question 3************************************/
+
+FUNCTION dot_product(A,B) : FLOAT
+VAR
+   A,B :ARRAY_OF FLOAT;
+   i:INTEGER;
+   ps:FLOAT;
+BEGIN
+    ps:=0;
+  FOR i FROM 0 TO 2 STEP step  DO
+     ps:=ps+A[i]*B[i]
+  END_FOR
+  Write(ps);
+END
+ALGORITHM Dot_product
+VAR
+    mtx_vec : ARRAY_OF FLOAT[3][];
+    n,i,j,k:INTEGER;
+    P:FLOAT;
+BEGIN
+REPEAT
+    Write("Enter the number of vectors");
+    Read(n);
+UNTIL (n>=2)
+
+FOR i FROM 0 TO n-1 STEP step  DO
+FOR j FROM 0 TO 2 STEP step  DO
+    Write("entrer la coordonnées",j+1,"du vecteur",i+1);
+       Read(mtx_vec[i][j]);
+END_FOR 
+END_FOR
+
+i:=0;
+REPEAT
+FOR j FROM i+1 TO n-1 STEP step  DO
+  FOR k FROM 0 TO 2 STEP step  DO
+     T1[k]:=mtx_vec[i][k];
+     T2[k]:=mtx_vec[j][k];
+  END_FOR
+ p:= dot_product(T1,T2):
+
+    IF (P=0) THEN
+        Write("the voctor",i+1,"and the vector",j+1,"are orthogonal")
+    END_IF
+END_FOR
+i:=i+1;
+UNTIL (i==n-2)
+END
